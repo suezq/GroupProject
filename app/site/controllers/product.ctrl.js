@@ -8,18 +8,23 @@
 		var productVm = this;
 		console.log("hi");
 		productVm.categories = [
-			{label:'Shirts',value:'shirts'},
-			{label:'Pants',value:'pants'},
-			{label:'Shoes',value:'shoes'},
-			{label:'Outerwear',value:'outerwear'},
-			{label:'Accessories',value:'accessories'},
+			{label:'Gear',value:'gear'},
+			{label:'Girls Clothing',value:'girls_clothing'},
+			{label:'Guys Clothing',value:'guys_clothing'}
 		];
 		
 		// productVm.product = {};
 		productVm.products = productSrv.products;
 		productVm.product_update_btn = 'Update Product';
 		productVm.product_delete_btn = 'Remove Product';
+		productVm.showTextEdit = "You have successfully edited your product!";
+		productVm.showTextDelete = "You have successfully deleted your product!";
+		productVm.showTextAdd = "You have successfully added your product!";
+		productVm.showEdit = false;
+		productVm.showAdd = false;
+		productVm.showDelete = false;
 		var productIdEdit = location.hash.split('/')[3]
+		
 		
 		if($stateParams.productId != undefined){
 			productSrv.getProduct($stateParams.productId)
@@ -64,14 +69,17 @@
 				quantity: productVm.quantity
 			}
 				productSrv.addProduct(newProduct)
-				.then(function(){
+				productVm.showAdd = true;
+				setTimeout(function() {
+					productVm.showAdd = false
 					console.log(newProduct)
 					console.log(productVm.products);
 					$state.go('admin.dash')
 					.then(function() {
 						$state.reload();
 					})
-				})
+				}, 500)
+				
 				
 				// Pushing the new product into the empty productVm.product array above. 
 
@@ -81,9 +89,17 @@
 
 		}
 			// Linking the newly added product to the product page 
+
+
+			//JINY's
+			// start[i].product.quantity -= start[i].quantity;
+			// self.updateProduct(start[i].product,start[i].product.id)
+
+
 		
 		function updateProduct(){
 			//TODO #2
+			
 			
 			//create product object, pass to product service
 			var updateProduct = {
@@ -96,20 +112,26 @@
 			}
 			
 
-			console.log(productVm.name)
-			console.log(productVm.image)
-			var productIdEdit = location.hash.split('/')[3];
-			console.log(productIdEdit)
-			productSrv.updateProduct(updateProduct, productIdEdit);
-			console.log(updateProduct)
+			
+			var productIdEdit = location.hash.split('/')[4];
+
 			// productSrv.updateProductList();
+			productSrv.updateProduct(updateProduct,productIdEdit);
+	
+			
+
 			//Update text in button
-			alert("You edited " + updateProduct.name);
-			productVm.product_update_btn = "You edit was successful";
-			$state.go('admin.dash')
-			.then(function() {
+			productVm.showEdit = true;
+
+			setTimeout(function() {
+				productVm.showEdit = false;
+				productVm.product_update_btn = "You edit was successful";
+				$state.go('admin.dash')
+				.then(function() {
 					$state.reload();
-			})
+				})
+			}, 500)
+			
 
 		}
 
@@ -120,13 +142,15 @@
 			var productIdEdit = location.hash.split('/')[3];
 
 			productSrv.deleteProduct(productIdEdit)
-			.then(function(){
-				alert("Your delete was successful");
+			productVm.showDelete = true;
+			setTimeout(function() {
+				productVm.showDelete = false;
 				$state.go('admin.dash')
 				.then(function() {
 					$state.reload();
-				})
-			})			
+				})			
+			}, 500)
+			
 			productSrv.updateProductList();
 		}
 

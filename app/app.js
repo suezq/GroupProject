@@ -23,14 +23,33 @@
 				}
 			})
 			.state('cart', {
-				url: '/cart',
+				url: '/cart/cart-products',
 				templateUrl: 'site/partials/shop-cart.html',
 				controller: 'cartCtrl as ctrl',
-				// resolve: {
-				// 	cart: function(prductSrv){
-				// 		return productSrc.getCartProducts();
-				// 	}
-				// }
+			})
+
+			.state('cart.cart-products', {
+				url: '/products',
+				templateUrl: 'site/partials/cart-products.html',
+				controller: 'productsCtrl as ctrl',
+			})
+
+			.state('cart.cart-personal', {
+				url: '/personal',
+				templateUrl: 'site/partials/cart-personal.html',
+				controller: 'personalCtrl as ctrl',
+			})
+
+			.state('cart.cart-shipping', {
+				url: '/shipping',
+				templateUrl: 'site/partials/cart-shipping.html',
+				controller: 'shipCtrl as ctrl',
+			})
+
+			.state('cart.cart-invoice', {
+				url: '/invoice',
+				templateUrl: 'site/partials/cart-invoice.html',
+				controller: 'invoiceCtrl as ctrl',
 			})
 
 			.state('guys-clothing',{
@@ -55,6 +74,25 @@
 				}
 			})
 
+			.state('productdetails',{
+				url: '/productdetails/:productId',
+				templateUrl: 'site/partials/productdetails.html',
+				controller: 'ProductdetailsCtrl as ctrl',
+				resolve:{
+					// productdetails:function(productSrv,$stateParams){
+					// 	return productSrv.getProduct($stateParams.productId);
+					// }
+				}
+			})
+
+			// .state('ProductID', {
+			// 	url: '/productdetails?productId',
+			// 	templateUrl: 'productdetails.html',
+			// 	controller: function($scope, $stateParams) {
+			// 		$scope.productId = $stateParams.productId;
+			// 	}
+			// });
+
 			.state('gear',{
 				url: '/gear',
 				templateUrl: 'site/partials/shop-gear.html',
@@ -65,9 +103,30 @@
 					}
 				}
 			})
+			.state('search',{
+				url: '/search',
+				templateUrl: 'site/partials/shop-searchresults.html',
+				controller: 'searchCtrl as ctrl',
+				resolve:{
+					clothing:function(productSrv){
+						return productSrv.getProducts();
+					}
+				}
+			})
+
+			.state('allproducts',{
+				url: '/all',
+				templateUrl: 'site/partials/shop-all.html',
+				controller: 'AllCtrl as ctrl',
+				resolve:{
+					clothing:function(productSrv){
+						return productSrv.getProducts();
+					}
+				}
+			})
 
 			.state('admin',{
-				url:'/admin',
+				url:'/admin/dashboard',
 				templateUrl:'site/partials/admin.html',
 				controller:'AdminCtrl as ctrl',
 				//TODO #2 Resolve Products before admin page load
@@ -94,6 +153,11 @@
 				url:'/edit_product/:productId',
 				controller:'ProductCtrl as ctrl',
 				templateUrl:'site/partials/admin-edit-product.html',
+			})
+			.state('admin.orders',{
+				url:'/orders',
+				controller:'AdminCtrl as ctrl',
+				templateUrl:'site/partials/admin-orders.html',
 			})
 
 			.state('auth',{

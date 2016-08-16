@@ -1,6 +1,4 @@
-<h3>
-	Add Product
-</h3>
+<h3 class="admin-product admin-dash-title">Add Product</h3>
 
 <article class="product-frm">
 	<form name="add-product" ng-submit="ctrl.addProduct()">
@@ -31,8 +29,11 @@
 			<input type="number" name="quantity" ng-model="ctrl.quantity" required>
 		</div>
 		<div>
-			<button type="submit">Add Product</button>
+			<button ng-class="{ active: showAdd }" type="submit">Add Product</button>
 
 		</div>
 	</form>
+	<div class="admin-messages">
+		<p ng-show="ctrl.showAdd">{{ctrl.showTextAdd}}</p>
+	</div>
 </article>

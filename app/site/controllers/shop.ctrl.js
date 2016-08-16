@@ -1,7 +1,7 @@
 (function(){
 	angular
 		.module('shopApp')
-		.controller('ShopCtrl',ShopCtrl)
+		.controller('ShopCtrl',ShopCtrl) // where the html is connected
 
 	function ShopCtrl($scope,productSrv, $state){
 		var shopVm = this;
@@ -24,12 +24,34 @@
 		}
 
 		shopVm.cart = function () {
-			$state.go('cart');
+			$state.go('cart.cart-products');
 		}
 
 		shopVm.addToCart = function (item) {
 			productSrv.cartItems.push(item)
 			console.log(productSrv.cartItems)
+		}
+
+		shopVm.gearpage = function (){
+			$state.go('gear');
+		}
+
+		shopVm.menpage = function (){
+			$state.go('guys-clothing');
+		}
+
+		shopVm.womenpage = function (){
+			$state.go('girls-clothing');
+		}
+
+		shopVm.allpage = function (){
+			console.log('i did a thing');
+			productSrv.searchTerm = shopVm.search; // save shopVm.search to a service
+			$state.go('allproducts');
+		}
+
+		shopVm.insta4 = function (){
+			$state.go('https://www.instagram.com/alanarblanchard/');
 		}
 	}
 

@@ -10,17 +10,19 @@ body{
 	font-size:100%;
 }
 
-.row div {
-background-color: white;
 
-
+/*.row div {
+background-color: #7cace3;
+margin-bottom: 25px;
 }
+*/
 .gear {
-	background-image:url("http://25.media.tumblr.com/tumblr_m4x0viEOao1qhvp06o1_500.jpg");
+	background-image:url("http://picalls.com/wp-content/uploads/2015/02/Surfboard-on-the-beach.jpg");
 	background-size: cover;
 }
+
 .lc {
-	background-image:url("http://img.surfing-waves.com/shop/media/images/ind-womens-surf-clothing.jpg");
+	background-image:url("http://i.huffpost.com/gen/1647273/images/o-WOMAN-SURFING-facebook.jpg");
 	background-size: cover;
 
 }
@@ -28,8 +30,19 @@ background-color: white;
 .gc {
 	background-image:url("http://images.shopmadeinchina.com/C0C22F20D142C61BE040007F0100076D/786/8979786_10/2012-Australian-Men-s-surf-shorts-beach-shorts_8979786_10.bak.jpg");
 	background-size: cover;
+	margin-left: -10px;
 	
 }
+
+.all {
+	background-image:url("https://pixabay.com/static/uploads/photo/2015/11/07/11/01/surf-board-1030739_960_720.jpg");
+	background-size: cover;
+
+
+
+	
+}
+
 .main-image{
 	height:300px;
 	width:400px;
@@ -38,24 +51,35 @@ background-color: white;
 	margin-top: 20px;
 	text-align: center;
 	align-items: center;
+
 }
 
 .ryan {
 	display:block;
 	margin:auto;
 	/*left:50px;*/
-	margin-top: 150px;
+	margin-top: 60px;
+	width: 150px;
+	color: white;
+	background-color: black;
+	border:none;
+
 }
 .words {
 	font-size: 32px;
-	color:lightgrey;
+	color:black;
 	margin: auto;
+	font-style: utopia;
+
 }
+
+
 /*
 Globals
 */
 .wrapper{
 	height:100%;
+
 }
 .content-wrapper{
 	max-width:82.5em;
@@ -79,39 +103,46 @@ ul{
 	height:100%;
 	vertical-align: middle;
 	width:100%;
+
 }
 
 a{
 	text-decoration: none;
 	color:#333;
 }
+
 /*
 Nav
 */
 
 nav{
+	width: 100%;
 	height:55px;
 	line-height:55px;
-	color:#ff6d37;
+	background-color: rgba(255,255,255,0.5);
+	color: black;
 	border-bottom:1px solid #d8d8d8;
-	box-shadow: 0 4px 2px -2px #d8d8d8;
+	z-index: 10000;	
+	/*box-shadow: 0 4px 2px -2px #d8d8d8;*/
 }
 
 nav .left-nav{
 	float:left;
-	margin:0px 0px 0px 70px;
+	margin: 0;
 	vertical-align: top;
+
 }
 
 nav .right-nav{
 	float: right;
-	margin:0px 70px 0px 0px;
+	margin:0px
 	vertical-align: top;
 }
 
 nav .fa-shopping-cart {
 	margin-right:10px;
 	font-size:2rem;
+	z-index: 99999;
 }
 
 nav .fa-user {
@@ -124,32 +155,86 @@ nav .cart{
 }
 
 nav .fa {
+	width: 100%;
 	display: inline;
+	color: black;
 }
 
+nav .logo-image {
+	height: 50px;
+}
 /*
 Top-content
 */
 .top-content{
 	width:100%;
-	height:calc(70% - 110px);
-	background:url('https://67.media.tumblr.com/5389b076930dc90b0fb46fb972a2a04d/tumblr_naxuyzqt5m1s39yzeo1_500.gif');
+	height:calc(70%);
+	background:url('http://wallpapercave.com/wp/Mz7LPNJ.jpg');
 	background-size:cover;
 	background-position:center center;
 	text-align: center;
+	background-attachment: fixed;
 }
+
+.gear2 {
+	width: 100%;
+	height: 350px;
+	background:url('https://img.grouponcdn.com/deal/c9fDzn6bb6eeddECU9eG/WQ-2048x1229/v1/c700x420.jpg');
+	background-size:cover;
+	background-position:center center;
+	margin: 0 auto;
+}
+
+.girls {
+	width: 100%;
+	height:calc(80% - 100px);
+	background:url("https://i.ytimg.com/vi/IleF72M8wQQ/maxresdefault.jpg");
+	background-size:cover;
+	background-position:center center;
+	margin: 0 auto;
+
+}
+
+.guys {
+	width: 100%;
+	height:400px;
+	background:url('http://www.singlesurfers.net/content/wp-content/uploads/2015/06/20-reasons-to-date-a-surfer.jpg');
+	background-size:cover;
+	background-position:center center;
+	margin: 0 auto;
+}
+
+
+
+/*Jumbotron text colors */
+
 
 .top-content h1{
-	color:black;
-	font-size:4rem;
+	font-size: 50rem;
+	/*margin-bottom: 320px;*/
+	margin-top: 100px;
+	color: rgb(255,85,33);
+	font-weight:200 !important;
+	font-family: Papyrus, fantasy;
+	font-size: 170px;
+	font-style: normal;
+	font-variant: normal;
+	line-height: 26.4px;
+
+
 }
 
-.top-content h3{
-	color:black;
-	font-size:2rem;
-	margin:10px 0px;
+h3{
+	margin-top:180px;
 	letter-spacing:0.05rem;
-	font-weight:100 !important;
+	font-weight:150;
+	font-size: 40px;
+	color: #FF5521 !important;
+	font-family: Papyrus, fantasy;
+}
+
+.Womenbanner {
+	text-align: center;
 }
 
 .top-content .content{
@@ -168,7 +253,7 @@ Top-content
 
 .top-content .search-btn{
 	position: absolute;
-	background:#ff6d37;
+	background:black;
 	height:40px;
 	width:40px;
 	border-top-right-radius:5px;
@@ -182,6 +267,14 @@ Top-content
 	width:18px;
 	margin-top:11px;
 }
+
+.words {
+	text-align: right;
+	padding-right: 300px;
+	color: lightgrey;
+	font-size: 0.
+}
+
 
 
 /*
@@ -202,7 +295,7 @@ Sub Nav
 	font-weight:200;
 }
 .product-nav li a:hover{
-	color:#ff6d37;
+	color:black;
 	border:none;
 	font-weight:400;
 	cursor:pointer;
@@ -211,9 +304,9 @@ Sub Nav
 }
 .product-nav li.focus > a{
 	
-	color:#ff6d37;
+	color:#ff5521;
 	font-weight:400;
-	border-bottom:2px solid #ff6d37;
+	border-bottom:2px solid black;
 	padding:4px 6px;
 }
 
@@ -221,10 +314,20 @@ Sub Nav
 /*
 Product view
 */
+/*.product-display {
+	margin: 0px 15px;
+}*/
 
 .product-view{
 	background: whitesmoke;
-	padding:40px 0px;
+	padding:20px 0px;
+	margin: 0px 15px;
+}
+
+.bannerheader {
+	font-family: 'Avant Garde', sans-serif;
+	color: black;
+	text-align: center;
 }
 
 .product-view .product-card{
@@ -238,9 +341,9 @@ Product view
 
 #product-card .product-buy{
 	position: absolute;
-	background: #ff6d37;
+	background-color: #000000;
 	border-radius:100%;
-	color:white;
+	color: #ff6d37;
 	height:30px;
 	width:30px;
 	top:10px;
@@ -248,7 +351,7 @@ Product view
 }
 
 #product-card .product-buy:hover .fa{
-	color:whitesmoke;
+	color:black;
 	cursor: pointer;
 	cursor:hand;
 }
@@ -261,6 +364,7 @@ Product view
 	padding:10px 0px;
 	letter-spacing: 0.05rem;
 }
+
 #product-card .product-name{
 	font-weight:600;
 }
@@ -269,6 +373,7 @@ Product view
 	font-style:italic;
 	font-weight:200;
 	font-size:1.2rem;
+	margin-top: 20px;
 }
 
 #product-card .product-cost{
@@ -276,4 +381,210 @@ Product view
 	font-weight:500;
 	margin:10px 0px;
 }
+
+
+.searchbutton {
+	border-radius: 12%;
+	border: solid 1px white;
+	border-color: white;
+	margin-left: 10px;
+	height: 30px;
+}
+
+
+.button {
+	text-align: center;
+}
+
+.product-image {
+	max-height: 400px;
+  	max-width: 350px;
+  	margin: 0px 100px;
+  }
+
+.searchresult {
+	padding-left: 100px;
+	padding-bottom: 50px;
+	font-family: 'Tahoma', 'sans-serif'!important;
+	color: #3F3C3A !important;
+
+}
+
+/*RESPONSIVE VIDEO */
+
+.embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  margin-top: 50px;
+
+}
+.embed-responsive .embed-responsive-item,
+.embed-responsive iframe,
+.embed-responsive embed,
+.embed-responsive object,
+.embed-responsive video {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.embed-responsive-16by9 {
+  padding-bottom: 56.25%;
+}
+.embed-responsive-4by3 {
+  padding-bottom: 75%;
+}
+
+.select{
+   background: #f0ad4e;
+   border-color: #eea236;
+   color: white;
+   width: 100px;
+   padding: 6px 12px;
+   font-size: 14px;
+   line-height: 1.42857143;
+   text-align: center;
+   white-space: nowrap;
+   border: 2px;
+   border-radius: 10px;
+   height: 34px;
+   display: inline-block;
+   vertical-align: middle;
+   }
+
+.text-center {
+	padding: 0px;
+	margin: 30px 0px 50px 0px;
+}
+
+#product-details {
+	background-color: #7cace3;
+}
+
+.button {
+	margin-top: 250px;
+}
+
+/*Filler Area*/
+
+.filler {
+	font-family: 'Verdana', 'sans-serif';
+	text-align: center;
+	padding-top: 80px;
+}
+
+
+
+
+/*Bottom content*/
+
+.bott-content{
+	margin-top: 130px;
+	width:100%;
+	height:400px;
+	margin-bottom: 100px;
+	background:url('http://67.media.tumblr.com/318dad67612502017bc1c694fc5f0bca/tumblr_my6c56q0hC1qdxg8qo1_1280.jpg');
+	background-position:center center;
+	text-align: center;
+	background-repeat: no-repeat;
+	z-index: 9999;
+	background-size: 100%;
+}
+
+.black {
+	background-color: transparent;
+	border-color: transparent;
+	color: #DA886A;
+	font-family: 'myFirstFont';
+	margin-bottom: 85px;
+	font-weight: bold;
+	font-size: 5rem;
+
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: local('../../../Adam.otf');
+}
+
+
+
+.inspire {
+	width: 100%
+}
+
+.insta1 p{
+	padding-top: 200px;
+}
+
+.insta2 {
+	background-image: url('http://41.media.tumblr.com/9b6a8ed35e02c77819eab9d827f4477c/tumblr_o161bxKKVS1v4obbzo1_1280.jpg');
+	width: 100%;
+	height: 400px;
+	background-position:center center;
+	text-align: center;
+	background-repeat: no-repeat;
+	position: relative;
+	background-size: 100%;
+}
+
+.insta3 {
+	background-image: url('http://66.media.tumblr.com/6b0b4791221b15b4aec8c2d4cf1bbec5/tumblr_nq7747zDZZ1t2fv4eo1_1280.jpg');
+	width: 100%;
+	height: 400px;
+	background-position:center center;
+	text-align: center;
+	background-repeat: no-repeat;
+	position: relative;
+	background-size: 100%;
+}
+
+.insta4 {
+	background-image: url('https://ca.billabong.com/media/transfer/img/unknown_1_4_2.jpeg');
+	width: 100%;
+	height: 400px;
+	background-position:center center;
+	text-align: center;
+	background-repeat: no-repeat;
+	position: relative;
+	background-size: 100%;
+}
+.insta5 {
+	background-image: url('http://65.media.tumblr.com/tumblr_ljka6zsD5k1qekcmoo1_1280.jpg');
+	width: 100%;
+	height: 400px;
+	background-position:center center;
+	text-align: center;
+	background-repeat: no-repeat;
+	position: relative;
+	background-size: 100%;
+}
+
+.insta-overlay {
+	background-color: rgba(0,0,0,0.25);
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+}
+
+
+.insta-overlay h2{
+	margin-top: 200px;
+	color: #CDD9DF; 
+	font-family: 'Avant Garde', 'sans-serif'; 
+}
+
+.insta-overlay:hover{
+	opacity: 1;
+}
+
 

@@ -9,26 +9,20 @@
 		//public variables
 		self.products = [];
 
-		self.cartItems = [{
-				productId:'1',
-				name:'Surfboard',
-				description:'you use it to surf',
-				category:'Surf',
-				price:'34',
-				quantity:'2',
-				status: true,
-				image: "../assets/img/img-duffle.png"
-			},{
-				productId:'1',
-				name:'Surfboard',
-				description:'you use it to surf',
-				category:'Surf',
-				price:'12',
-				quantity:'2',
-				status: true,
-				image: "../assets/img/img-duffle.png"
-			}];
-			
+		self.cartItems = [];
+		
+		self.shippingType;
+
+		self.shippingPrice;
+		self.personalInfo;
+
+		self.totalNoTax;
+		self.totalWithTax;
+
+		self.searchTerm = '';
+
+		self.searchTerm = '';
+
 		//public functions
 		self.getProduct = getProduct;
 		self.getProducts = getProducts;
@@ -37,6 +31,8 @@
 		self.updateProductList = updateProductList;
 		self.removeProduct = removeProduct;
 		self.deleteProduct = deleteProduct;
+		self.addToCart = addToCart;
+		self.addToCartDetail = addToCartDetail;
 
 		function getProducts(){
 			return api.request('/products',{},'GET')
@@ -60,14 +56,12 @@
 					//product was added successfully
 					console.log(res);
 					self.products.push(res.data.product);
-					console.log(self.products)
 				}
 			})
 		}
 
 		function updateProduct(product,productId){
-			console.log(product)
-			console.log(productId)
+			console.log(productId);
 			api.request('/products/'+productId,product,'PUT')
 			.then(function(res){
 				console.log(res);
@@ -105,7 +99,7 @@
 					self.products[i].quantity = product.quantity;
 				}
 			}
-			console.log(self.products)
+
 		}
 
 		function removeProduct(productId){
@@ -118,36 +112,117 @@
 
 		removeProduct(2)
 
-		// addFakeProducts()
+		function addToCart(item) {
+			// check if item is already in cart
+			for (i = 0; i < self.cartItems.length; i++) {
+				if (self.cartItems[i].product.id === item.id) {
+					self.cartItems[i].quantity++;
+					return;
+				}
+			}
 
-		// function addFakeProducts() {
-		// 	var pdt1 = {
-		// 		productId:'1',
-		// 		name:'Surfboard',
-		// 		description:'you use it to surf',
-		// 		category:'Surf',
-		// 		price:'34',
-		// 		quantity:'2',
-		// 		status: true,
-		// 		image: "../assets/img/img-duffle.png"
-		// 	}
-		// 	var pdt2 = {
-		// 		productId:'2',
-		// 		name:'Boardshorts',
-		// 		description: "don't go nakeed!!",
-		// 		category:'Boardshorts',
-		// 		price:'12',
-		// 		quantity:'4',
-		// 		status:true,
-		// 		image: "../assets/img/img-duffle.png"
-		// 	}
+			var newCart = {
+				product: item,
+				quantity:  1
+			}
 
-		// 	addProduct(pdt1);
-		// 	addProduct(pdt2);
+			self.cartItems.push(newCart)
+			var saveCart = JSON.stringify(self.cartItems)
+			localStorage.setItem('savedCart',saveCart)
+		}
+
+		function addToCartDetail(item,quantity) {
+			// check if item is already in cart
+			for (i = 0; i < self.cartItems.length; i++) {
+				if (self.cartItems[i].product.id === item.id) {
+					self.cartItems[i].quantity++;
+					return;
+				}
+			}
+			var newCart = {
+				product: item,
+				quantity:  quantity
+			}			
+			self.cartItems.push(newCart)
+
+			var saveCart = JSON.stringify(self.cartItems)
+			localStorage.setItem('savedCart',saveCart)
+
+
+		}
+
+console.log(self.shippingType)
+
+		self.toAdmin2 = function () {
+
+			//extracting cart info:
+			var start = JSON.parse(localStorage.getItem('savedCart'));
+				//remove items from inventory
+				for (var i=0; i<start.length; i++) {
+					start[i].product.quantity -= start[i].quantity;
+					self.updateProduct(start[i].product,start[i].product.id)
+				}
+
+			var cart = [];
+			for (var i=0; i<start.length; i++) {
+				cart.push({id: start[0].product.id, name: start[0].product.name});
+			};
+			var x = '';
+			for (var i=0; i<cart.length; i++) {
+				x += '  >> Id: ' + cart[i].id + '   Name: ' + cart[i].name + '\n'
+			}
+
+
+			var newOrder1 = {
+				id: 0,
+				cart: x,
+				ship: self.shippingType,
+				msg: '',
+				status: ''
+			}
+			var newOrder = Object.assign(self.personalInfo, newOrder1);
 			
-		// }
+			if(!JSON.parse(localStorage.getItem('ORDERS'))) {
+				newOrder.id = 0;
+				var x = [];
+				x.push(newOrder);
+				localStorage.setItem('ORDERS', JSON.stringify(x))
+			} else {
+				var x = JSON.parse(localStorage.getItem('ORDERS'));
+				x[x.length] = newOrder;
+				localStorage.setItem('ORDERS', JSON.stringify(x));
+			}
+
+		}
 
 
+		self.toAdmin = orderToAdmin();
+		function orderToAdmin() {
+			// creating A client Order
+			var newOrder = {
+				cart: JSON.parse(localStorage.getItem('savedCart')),
+				client: JSON.parse(localStorage.getItem('savedPersonalInfo')),
+				shipping: self.shippingType
+			}
+			// for (var i = 0,i<ctrl.cartItems.length; i++) {
+				
+			// 		updateProduct()
+			// }
+		}			
 
+			// if ( !(localStorage.getItem('savedOrders'))) {
+			// 	newOrder = JSON.stringify(newOrder)
+			// 	localStorage.setItem('savedOrders', [newOrder])
+			// } else {
+			// 	var tempOrders = JSON.parse(localStorage.getItem('savedOrders'))
+			// 	tempOrders.push(newOrder)
+			// 	JSON.stringify(tempOrders)
+			// 	localStorage.setItem('savedOrders', tempOrders)
+			// }
+		// check localStorage for previous saved orders 
+		// if none, make new array in local storage 
+		// 	if exists, just push new order into existing array
+		//
+		
 	}
 })();
